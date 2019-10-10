@@ -7,8 +7,7 @@ class View extends React.Component{
     constructor(props) {
         super(props);
         this.state = {names: '',gst_no:'',Data:[]};
-        this.handleSubmit = this.handleSubmit.bind(this);
-        console.log(props);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount(){
@@ -20,10 +19,18 @@ class View extends React.Component{
        })
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
-        axios.delete(server +'/api/tasks/'+this.props.match.params.id);
-        this.props.history.push('/view');
+    handleDelete(id) {
+        axios.delete(server + '/api/tasks/'+id, {
+            
+        })
+        .then( 
+            (response) => { 
+                axios.get(server +'/api/tasks').then(res => {
+                   this.setState({Data:res.data});
+                })
+            },
+            (error) => { console.log(error.response) }
+        );
     }
 
     render(){ 
@@ -40,16 +47,14 @@ class View extends React.Component{
                             </tr>
                             </thead>
                             <tbody>
-                                {this.state.Data.map((Da,index)=>
+                                {this.state.Data.map((Data,index)=>
                                     <tr key={index}>
                                         <td>{++index}</td>
-                                        <td>{Da.name}</td>
-                                        <td>{Da.gst_no}</td>
+                                        <td>{Data.name}</td>
+                                        <td>{Data.gst_no}</td>
                                         <td>
-                                            <form onSubmit={this.handleSubmit}>
-                                                <Link to={"edit/"+Da.id} className="btn btn-primary">Edit</Link>&nbsp;
-                                                <input type="submit" value="Delete" className="btn btn-danger"/>
-                                            </form>
+                                            <Link to={"edit/"+Data.id} className="btn btn-primary">Edit</Link>&nbsp;
+                                            <button onClick={() => this.handleDelete(Data.id)} className="btn btn-sm btn-warning float-right">Delete</button>
                                         </td>
                                     </tr>
                                 )}

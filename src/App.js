@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 import Welcome from './components/welcome';
 import {View} from './components/view';
@@ -23,11 +23,11 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-        	<Route exact path="/" component={Welcome}>
-          	</Route>
-          	<Route path="/view" component={View}>
-          	</Route><
-            Route path="/edit/:id" component={Edit}>
+      	    <Route exact path="/" component={Welcome}>
+      	    </Route>
+        	  <Route path="/view" component={View}>
+    	      </Route>
+            <Route path="/edit/:id" component={Edit}>
             </Route>
         </Switch>
       </div>
