@@ -36,32 +36,32 @@ class View extends React.Component{
     render(){ 
         return (
             <div className="row">
-                    <div className="container">
-                        <table className="table table-hover">
-                            <thead>
-                            <tr>
-                                <td>ID</td>
-                                <td>name</td>
-                                <td>gst_no</td>
-                                <td>Actions</td>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.Data.map((Data,index)=>
-                                    <tr key={index}>
-                                        <td>{++index}</td>
-                                        <td>{Data.name}</td>
-                                        <td>{Data.gst_no}</td>
-                                        <td>
-                                            <Link to={"edit/"+Data.id} className="btn btn-primary">Edit</Link>&nbsp;
-                                            <button onClick={() => this.handleDelete(Data.id)} className="btn btn-sm btn-warning float-right">Delete</button>
-                                        </td>
-                                    </tr>
-                                )}
-                            </tbody>
-                        </table>
-                    </div>
+                <div className="container">
+                    <table className="table table-hover">
+                        <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>name</td>
+                            <td>gst_no</td>
+                            <td>Actions</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.Data.map((Data,index)=>
+                                <tr key={index}>
+                                    <td>{++index}</td>
+                                    <td>{Data.name}</td>
+                                    <td>{Data.gst_no}</td>
+                                    <td>
+                                        <Link to={"edit/"+Data.id} className="btn btn-primary">Edit</Link>&nbsp;
+                                        <button onClick={() => this.handleDelete(Data.id)} className="btn btn-sm btn-warning float-right">Delete</button>
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
                 </div>
+            </div>
         ) 
     }
 }

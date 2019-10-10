@@ -9,16 +9,21 @@ export default function App() {
   return (
     <BrowserRouter>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/view">View</Link>
-            </li>
-          </ul>
-        </nav>
+
+      <div className="row">
+          <div className="container">
+            <nav className="navbar navbar-inverse">
+              <ul className="nav navbar-nav">
+                <li>
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li>
+                    <Link to="/view">View</Link>
+                  </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}

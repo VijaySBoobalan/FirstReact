@@ -5,7 +5,6 @@ import {server} from './config';
 class Welcome extends React.Component{
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {names: '',gst_no:'',Data:[]};
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -64,8 +63,14 @@ class Welcome extends React.Component{
                     </div>
                     <div className="row">
                         <div className="container">
-                            <div className="form-group">
-                                <input type="submit" value="Submit" className="btn btn-primary"/>
+                            <div className="col-sm-5">
+                            </div>
+                            <div className="col-sm-3">
+                                <div className="form-group">
+                                    <input type="submit" value="Submit" className="btn btn-primary"/>
+                                </div>
+                            </div>
+                            <div className="col-sm-3">
                             </div>
                         </div>
                     </div>
